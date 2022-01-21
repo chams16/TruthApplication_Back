@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: saraha-api
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/saraha
+    username: postgres
+    password: chams16
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  banner:
+    location: classpath:Banner.txt
+
+
+server:
+  port: 8085
+  servlet:
+    context-path: /saraha-api
+
