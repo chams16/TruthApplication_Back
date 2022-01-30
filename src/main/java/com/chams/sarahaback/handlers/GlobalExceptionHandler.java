@@ -4,6 +4,7 @@ import com.chams.sarahaback.Exceptions.ExceptionRepresentation;
 import com.chams.sarahaback.Exceptions.ObjectValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -28,5 +29,12 @@ public class GlobalExceptionHandler {
                 .errorMessage("Object not found exception")
                 .build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionRepresentation);
+    }
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ExceptionRepresentation> handleException(BadCredentialsException exception){
+        ExceptionRepresentation exceptionRepresentation = ExceptionRepresentation.builder()
+                .errorMessage("Login and  / or password is incorrect")
+                .build();
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exceptionRepresentation);
     }
 }

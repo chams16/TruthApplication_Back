@@ -26,6 +26,8 @@ public class Message {
 
     private String typeMsg;
 
+    private boolean publicMsg;
+
     private boolean favori;
 
     @ManyToOne
